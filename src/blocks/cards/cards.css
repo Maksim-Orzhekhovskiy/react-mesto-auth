@@ -1,0 +1,24 @@
+.cards {
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  gap: 20px 17px;
+}
+
+@media screen and (max-width: 950px) {
+  .cards {
+    grid-template-columns: repeat(2, 282px);
+    justify-content: center;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  .cards {
+    grid-template-columns: 282px;
+    gap: 20px;
+  }
+
+}

@@ -1,0 +1,33 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+
+@media screen and (max-width: 950px) {
+  .profile {
+    margin: 0 auto;
+    padding: 0 15px 50px;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media screen and (max-width: 550px) {
+  .profile {
+    max-width: 282px;
+    padding: 0 0 36px;
+ }
+
+}

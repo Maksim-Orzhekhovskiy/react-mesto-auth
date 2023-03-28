@@ -1,0 +1,11 @@
+.profile__info {
+  max-width: 338px;
+  position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__info {
+    justify-content: center;
+  }
+
+}

@@ -1,0 +1,21 @@
+.footer {
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  display: flex;
+  margin: 0 auto;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 950px) {
+  .footer {
+    padding-left: 27px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .footer {
+    padding-left: 19px;
+  }
+}

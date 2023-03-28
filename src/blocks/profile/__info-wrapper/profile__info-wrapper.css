@@ -1,0 +1,19 @@
+.profile__info-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  align-items: baseline;
+  column-gap: 18px;
+}
+
+@-moz-document url-prefix() {
+  .profile__info-wrapper {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile__info-wrapper {
+    display: block;
+  }
+
+}

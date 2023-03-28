@@ -1,0 +1,8 @@
+.card__wrapper {
+  max-width: 246px;
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 20px 22px 21px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}

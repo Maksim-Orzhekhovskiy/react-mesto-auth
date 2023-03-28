@@ -1,0 +1,7 @@
+.card__like-wrapper {
+  margin: 0;
+  max-height: 35px;
+  display: flex;
+  flex-direction: column;
+
+}
