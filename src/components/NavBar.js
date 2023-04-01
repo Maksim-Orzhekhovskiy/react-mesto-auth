@@ -18,7 +18,7 @@ function NavBar({ email, onLogOut }) {
     } else {
       return (
         <>
-          <p className="header__user-email">{email}</p>
+          <p className="header__user-email">{email || ""}</p>
           <button type="button" className="header__sign-out" onClick={onLogOut}>
             Выйти
           </button>

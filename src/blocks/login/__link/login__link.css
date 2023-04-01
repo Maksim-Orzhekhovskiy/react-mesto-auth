@@ -5,11 +5,12 @@
   -moz-osx-font-smoothing: grayscale;
   font-family: Inter;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 17px;
   letter-spacing: 0em;
   cursor: pointer;
   transition: opacity 0.2s linear;
   text-decoration: none;
+  font-size: 14px;
 }
 .login__link:hover {
   opacity: 0.6;

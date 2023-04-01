@@ -1,3 +1,7 @@
 .login__question {
   margin: 0;
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 17px;
 }

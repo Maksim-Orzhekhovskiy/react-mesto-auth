@@ -45,6 +45,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        handleInfoTooltip();
+        setinfoTooltipImage(error);
+        setInfoTooltipTitle("Что-то пошло не так! Попробуйте ещё раз.");
       });
   }
 
