@@ -12,6 +12,7 @@
   letter-spacing: 0em;
   cursor: pointer;
   transition: opacity 0.2s linear;
+  font-size: 18px;
 }
 .header__sign-out:hover {
   opacity: 0.6;

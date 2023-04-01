@@ -186,12 +186,17 @@ function App() {
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
+          <Header
+            title="Выйти"
+            route="*"
+            onLogOut={onSignOut}
+            email={emailName}
+          />
           <Routes>
             <Route
               path="/sign-in"
               element={
                 <>
-                  <Header title="Регистрация" route="/sign-up" />
                   <Login onLogin={onLogin} />
                 </>
               }
@@ -200,22 +205,14 @@ function App() {
               path="/sign-up"
               element={
                 <>
-                  <Header title="Войти" route="/sign-in" />
                   <Register onRegister={onRegister} />
                 </>
               }
             />
             <Route
-              index
               path="/"
               element={
                 <>
-                  <Header
-                    title="Выйти"
-                    route=""
-                    onLogOut={onSignOut}
-                    email={emailName}
-                  />
                   <ProtectedRouteElement
                     component={Main}
                     isLogged={isLogged}

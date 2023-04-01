@@ -1,32 +1,46 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 
 function NavBar({ email, onLogOut }) {
-  const location = useLocation();
-  function handleElementToggle() {
-    if (location.pathname === "/sign-in") {
-      return (
-        <Link to="/sign-up" className="header__link">
-          Регистрация
-        </Link>
-      );
-    } else if (location.pathname === "/sign-up") {
-      return (
-        <Link to="/sign-in" className="header__link">
-          Войти
-        </Link>
-      );
-    } else {
-      return (
-        <>
-          <p className="header__user-email">{email || ""}</p>
-          <button type="button" className="header__sign-out" onClick={onLogOut}>
-            Выйти
-          </button>
-        </>
-      );
-    }
-  }
-  return <div className="header__nav">{handleElementToggle()}</div>;
+  return (
+    <div className="header__nav">
+      <Routes>
+        <Route
+          exact
+          path="/sign-in"
+          element={
+            <Link to="/sign-up" className="header__link">
+              Регистрация
+            </Link>
+          }
+        />
+        <Route
+          exact
+          path="/sign-up"
+          element={
+            <Link to="/sign-in" className="header__link">
+              Войти
+            </Link>
+          }
+        />
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <p className="header__user-email">{email}</p>
+              <button
+                type="button"
+                className="header__sign-out"
+                onClick={onLogOut}
+              >
+                Выйти
+              </button>
+            </>
+          }
+        />
+      </Routes>
+    </div>
+  );
 }
 
 export default NavBar;
