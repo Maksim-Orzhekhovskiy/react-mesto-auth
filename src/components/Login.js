@@ -24,7 +24,7 @@ function Login(props) {
         <input
           className="login__input"
           value={email}
-          placeholder="email"
+          placeholder="Email"
           type="email"
           onChange={handleEmail}
           required

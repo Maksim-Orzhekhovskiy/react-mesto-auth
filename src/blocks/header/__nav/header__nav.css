@@ -1,0 +1,5 @@
+.header__nav {
+  display: flex;
+  column-gap: 24px;
+  align-items: center;
+}

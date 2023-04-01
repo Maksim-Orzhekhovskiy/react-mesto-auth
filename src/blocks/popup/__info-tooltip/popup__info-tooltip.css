@@ -1,0 +1,9 @@
+.popup__info-tooltip {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  z-index: 100;
+  padding-top: 60px;
+}

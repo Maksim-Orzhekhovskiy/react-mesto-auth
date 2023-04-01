@@ -11,6 +11,7 @@ export function registration(email, password) {
   return fetch(`${BASE_AUTH_URL}/signup`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
@@ -21,6 +22,7 @@ export function login(email, password) {
   return fetch(`${BASE_AUTH_URL}/signin`, {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
@@ -31,6 +33,7 @@ export function getToken(jwt) {
   return fetch(`${BASE_AUTH_URL}/users/me`, {
     method: "GET",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
     },

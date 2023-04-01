@@ -1,0 +1,9 @@
+.login {
+  font-family: "Inter", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

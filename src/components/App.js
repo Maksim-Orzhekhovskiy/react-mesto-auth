@@ -13,6 +13,10 @@ import Register from "./Register";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ProtectedRouteElement from "./ProtectedRoute";
 import * as auth from "../utils/auth";
+import InfoTooltip from "./InfoTooltip";
+
+import error from "../images/error.svg";
+import done from "../images/done.svg";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -23,9 +27,12 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLogged, setIsLoggedIn] = useState(false);
   const [emailName, setEmailName] = useState(null);
   const navigate = useNavigate();
+  const [infoTooltip, setInfoTooltip] = useState(false);
+  const [infoTooltipImage, setinfoTooltipImage] = useState("");
+  const [infoTooltipTitle, setInfoTooltipTitle] = useState("");
 
   function onLogin(email, password) {
     auth
@@ -45,11 +52,16 @@ function App() {
     auth
       .registration(email, password)
       .then(() => {
+        setinfoTooltipImage(done);
+        setInfoTooltipTitle("Вы успешно зарегистрировались!");
         navigate("/sign-in");
       })
       .catch((err) => {
         console.log(err);
-      });
+        setinfoTooltipImage(error);
+        setInfoTooltipTitle("Что-то пошло не так! Попробуйте ещё раз.");
+      })
+      .finally(handleInfoTooltip);
   }
 
   useEffect(() => {
@@ -61,23 +73,24 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             setEmailName(res.data.email);
+            navigate("/", { replace: true });
           }
         })
         .catch((err) => {
           console.error(err);
         });
     }
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
-    isLoggedIn &&
+    isLogged &&
       Promise.all([api.getUserData(), api.getInitialCards()])
         .then(([userData, cardsData]) => {
           setCurrentUser(userData);
           setCards(cardsData);
         })
         .catch((err) => console.error(err));
-  }, [isLoggedIn]);
+  }, [isLogged]);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -113,17 +126,22 @@ function App() {
       .catch((err) => console.error(err));
   }
 
+  function handleInfoTooltip() {
+    setInfoTooltip(true);
+  }
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
+    setInfoTooltip(false);
   }
 
   function onSignOut() {
     localStorage.removeItem("jwt");
-    navigate("/sign-in");
     setIsLoggedIn(false);
+    navigate("/sign-in");
     setEmailName("");
   }
 
@@ -185,18 +203,19 @@ function App() {
               }
             />
             <Route
+              index
               path="/"
               element={
                 <>
                   <Header
                     title="Выйти"
                     route=""
-                    onClick={onSignOut}
-                    mail={emailName}
+                    onLogOut={onSignOut}
+                    email={emailName}
                   />
                   <ProtectedRouteElement
                     component={Main}
-                    isLogged={isLoggedIn}
+                    isLogged={isLogged}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
                     onEditAvatar={handleEditAvatarClick}
@@ -205,11 +224,11 @@ function App() {
                     onCardLike={handleCardLike}
                     onCardDelete={handleCardDelete}
                   />
+                  <Footer />
                 </>
               }
             />
           </Routes>
-          <Footer />
           <ImagePopup onClose={closeAllPopups} card={selectedCard} />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
@@ -225,6 +244,12 @@ function App() {
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onSubmit={handleAddPlaceSubmit}
+          />
+          <InfoTooltip
+            image={infoTooltipImage}
+            title={infoTooltipTitle}
+            isOpen={infoTooltip}
+            onClose={closeAllPopups}
           />
         </div>
       </CurrentUserContext.Provider>

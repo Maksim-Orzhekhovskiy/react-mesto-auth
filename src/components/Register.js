@@ -29,21 +29,22 @@ function Register(props) {
           value={email}
           onChange={handleEmail}
           required
+          autoComplete="off"
         />
         <input
           className="login__input"
           type="password"
           placeholder="Пароль"
           value={password}
-          autoComplete="on"
           onChange={handlePassword}
           required
+          autoComplete="off"
         />
-        <button className="login__btn" type="submit">
+        <button className="login__submit" type="submit">
           Зарегистрироваться
         </button>
       </form>
-      <p className="login__text">
+      <p className="login__question">
         Уже зарегистрированы?{" "}
         <Link to="/sign-in" className="login__link">
           Войти

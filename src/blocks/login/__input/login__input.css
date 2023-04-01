@@ -1,0 +1,16 @@
+.login__input {
+  min-height: 27px;
+  border: none;
+  border-bottom: 2px solid rgba(204, 204, 204, 1);
+  color: #cccccc;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  padding: 0;
+  display: block;
+  width: 100%;
+  background: none;
+}
+.login__input:nth-child(2) {
+  margin-bottom: 216px;
+}
